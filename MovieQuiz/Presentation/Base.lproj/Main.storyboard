@@ -25,8 +25,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aGb-W5-ezh">
-                                <rect key="frame" x="152" y="348" width="374" height="797.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aGb-W5-ezh">
+                                <rect key="frame" x="20" y="58" width="374" height="797.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fj-aA-ksQ">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="23.5"/>
@@ -86,6 +86,9 @@
                                                         <integer key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="noButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eca-sg-a07"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVa-cY-iOI" userLabel="Yes button">
                                                 <rect key="frame" x="197" y="0.0" width="177" height="60"/>
@@ -101,6 +104,9 @@
                                                         <integer key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="yesButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ICM-QF-Z9V"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -118,6 +124,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aGb-W5-ezh" secondAttribute="trailing" constant="20" id="LiT-GG-kAO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="counterLabel" destination="edG-bx-Iun" id="Iqv-vF-2Tt"/>
+                        <outlet property="imageView" destination="SLK-cb-Jpo" id="Jxj-qa-R3A"/>
+                        <outlet property="textLabel" destination="EMd-uc-nz7" id="8xY-eU-rpV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
