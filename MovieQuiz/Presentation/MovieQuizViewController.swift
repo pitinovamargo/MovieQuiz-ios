@@ -6,6 +6,9 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var textLabel: UILabel!
     @IBOutlet private weak var counterLabel: UILabel!
+    @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var yesButton: UIButton!
+    
     private var currentQuestionIndex: Int = 0
     private var correctAnswers: Int = 0
     
@@ -14,7 +17,8 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     private var currentQuestion: QuizQuestion?
     
     private var alertPresenter: AlertPresenter?
-   
+    private var statisticService: StatisticService = StatisticServiceImplementation()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         questionFactory = QuestionFactory(delegate: self)
@@ -39,6 +43,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     // MARK: - Actions
     
     @IBAction private func yesButtonClicked(_ sender: Any) {
+        yesButton.isEnabled = false
         guard let currentQuestion = currentQuestion else {
             return
         }
@@ -46,6 +51,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
     }
     @IBAction private func noButtonClicked(_ sender: Any) {
+        noButton.isEnabled = false
         guard let currentQuestion = currentQuestion else {
             return
         }
@@ -72,13 +78,13 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
             self.showNextQuestionOrResults()
         }
     }
-    
-    
+        
     private func showNextQuestionOrResults() {
       if currentQuestionIndex == questionsAmount - 1 {
+          statisticService.store(correct: self.correctAnswers, total: self.questionsAmount)
           let resultAlert = AlertModel(
                                 title: "Этот раунд окончен",
-                                message: "Ваш результат: \(correctAnswers)/\(questionsAmount)",
+                                message: "Ваш результат: \(correctAnswers)/\(questionsAmount)\n Количество сыгранных квизов: \(statisticService.gamesCount)\n Рекорд: \(statisticService.bestGame.correct)/\(statisticService.bestGame.total) (\(statisticService.bestGame.date.dateTimeString))\n Средняя точность: \(String(format: "%.2f", statisticService.totalAccuracy * 100))%",
                                 buttonText: "Сыграть еще раз")
                                 { [weak self] in
                                     guard let self = self else { return }
@@ -96,6 +102,8 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
           imageView.layer.borderWidth = 0
 
           questionFactory?.requestNextQuestion()
+          noButton.isEnabled = true
+          yesButton.isEnabled = true
       }
     }
     
