@@ -80,7 +80,7 @@ class QuestionFactory: QuestionFactoryProtocol {
             }
         }
     }
-
+    
     func loadData() {
         moviesLoader.loadMovies { [weak self] result in
             DispatchQueue.main.async {
@@ -97,6 +97,6 @@ class QuestionFactory: QuestionFactoryProtocol {
     }
     
 }
-    
+
 
 

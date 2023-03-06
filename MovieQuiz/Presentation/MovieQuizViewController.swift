@@ -58,7 +58,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     }
     
     func didFailToLoadData(with error: Error) {
-        showNetworkError(message: error.localizedDescription) // возьмём в качестве сообщения описание ошибки
+        showNetworkError(message: error.localizedDescription)
     }
     
     // MARK: - Actions
@@ -138,7 +138,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         
         let errorAlert = AlertModel(title: "Что-то пошло не так(",
                                     message: "Невозможно загрузить данные",
-                                    buttonText: "Попробовать ееще раз")
+                                    buttonText: "Попробовать еще раз")
         { [weak self] in
             guard let self = self else { return }
             
