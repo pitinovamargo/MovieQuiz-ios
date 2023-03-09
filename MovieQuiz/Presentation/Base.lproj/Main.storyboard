@@ -60,7 +60,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzP-Fw-ydy">
                                         <rect key="frame" x="0.0" y="624.5" width="374" height="93"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг этого фильма меньше, чем 5?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMd-uc-nz7" userLabel="Question Label">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг этого фильма больше чем 7?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMd-uc-nz7" userLabel="Question Label">
                                                 <rect key="frame" x="42" y="13" width="290" height="67"/>
                                                 <fontDescription key="fontDescription" name="YSDisplay-Bold" family="YS Display" pointSize="23"/>
                                                 <color key="textColor" name="white"/>
@@ -120,6 +120,9 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="xZX-X3-E34">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="black"/>
@@ -127,9 +130,12 @@
                             <constraint firstItem="aGb-W5-ezh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9bC-e9-8c0"/>
                             <constraint firstItem="aGb-W5-ezh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="JAV-LH-yBA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aGb-W5-ezh" secondAttribute="trailing" constant="20" id="LiT-GG-kAO"/>
+                            <constraint firstItem="xZX-X3-E34" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e7T-TB-t2A"/>
+                            <constraint firstItem="xZX-X3-E34" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pB2-Pe-tL1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="xZX-X3-E34" id="xdm-Wi-608"/>
                         <outlet property="counterLabel" destination="edG-bx-Iun" id="Iqv-vF-2Tt"/>
                         <outlet property="imageView" destination="SLK-cb-Jpo" id="Jxj-qa-R3A"/>
                         <outlet property="noButton" destination="lYC-we-ZB9" id="usB-ow-c25"/>
