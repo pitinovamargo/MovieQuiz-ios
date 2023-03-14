@@ -16,7 +16,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
     private var correctAnswers: Int = 0
     private var questionFactory: QuestionFactoryProtocol?
-    private var currentQuestion: QuizQuestion?
     
     private var alertPresenter: AlertPresenter?
     private var statisticService: StatisticService = StatisticServiceImplementation()
@@ -36,6 +35,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         questionFactory?.loadData()
         
         alertPresenter = AlertPresenter(alertPresenterDelegate: self)
+        presenter.viewController = self
     }
     // MARK: - QuestionFactoryDelegate
     
@@ -44,7 +44,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
             return
         }
         
-        currentQuestion = question
+        presenter.currentQuestion = question
         let viewModel = presenter.convert(model: question)
         DispatchQueue.main.async { [weak self] in
             self?.show(quiz: viewModel)
@@ -64,24 +64,21 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
     @IBAction private func yesButtonClicked(_ sender: Any) {
         yesButton.isEnabled = false
-        guard let currentQuestion = currentQuestion else {
-            return
-        }
-        let givenAnswer = true
-        showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
+        
+        presenter.currentQuestion = presenter.currentQuestion
+        presenter.yesButtonClicked()
     }
-    @IBAction private func noButtonClicked(_ sender: Any) {
+    
+    @IBAction private func noButtonClicked(_ sender: UIButton) {
         noButton.isEnabled = false
-        guard let currentQuestion = currentQuestion else {
-            return
-        }
-        let givenAnswer = false
-        showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
+        
+        presenter.currentQuestion = presenter.currentQuestion
+        presenter.noButtonClicked()
     }
     
     // MARK: - Private functions
     
-    private func showAnswerResult(isCorrect: Bool) {
+    func showAnswerResult(isCorrect: Bool) {
         
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 8
