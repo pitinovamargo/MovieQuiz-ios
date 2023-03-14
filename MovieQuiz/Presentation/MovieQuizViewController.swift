@@ -1,6 +1,6 @@
 import UIKit
 
-final class MovieQuizViewController: UIViewController {
+final class MovieQuizViewController: UIViewController, MovieQuizViewControllerProtocol {
     
     // MARK: - Lifecycle
     
@@ -58,13 +58,6 @@ final class MovieQuizViewController: UIViewController {
         }
     }
     
-    func questionInitState() {
-        noButton.isEnabled = true
-        yesButton.isEnabled = true
-        imageView.layer.borderWidth = 0
-    }
-    
-    
     func showNetworkError(message: String) {
         hideLoadingIndicator()
         
@@ -81,6 +74,9 @@ final class MovieQuizViewController: UIViewController {
     }
     
     func show(quiz step: QuizStepViewModel) {
+        noButton.isEnabled = true
+        yesButton.isEnabled = true
+        imageView.layer.borderWidth = 0
         imageView.image = step.image
         textLabel.text = step.question
         counterLabel.text = step.questionNumber
