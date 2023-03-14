@@ -104,7 +104,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         if currentQuestionIndex == questionsAmount - 1 {
             statisticService.store(correct: self.correctAnswers, total: self.questionsAmount)
             let resultAlert = AlertModel(
-                title: "Этот раунд окончен",
+                title: "Этот раунд окончен!",
                 message: """
                 Ваш результат: \(correctAnswers)/\(questionsAmount)
                 Количество сыгранных квизов: \(statisticService.gamesCount)
