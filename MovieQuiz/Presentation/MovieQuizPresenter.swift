@@ -9,13 +9,13 @@ import UIKit
 
 final class MovieQuizPresenter: QuestionFactoryDelegate {
     
-    let questionsAmount: Int = 10
+    private let questionsAmount: Int = 10
     private var currentQuestionIndex: Int = 0
-    var currentQuestion: QuizQuestion?
-    var viewController: MovieQuizViewControllerProtocol?
-    var correctAnswers: Int = 0
-    var questionFactory: QuestionFactoryProtocol?
-    var alertPresenter: AlertPresenter?
+    private var correctAnswers: Int = 0
+    private var currentQuestion: QuizQuestion?
+    private var viewController: MovieQuizViewControllerProtocol?
+    private var questionFactory: QuestionFactoryProtocol?
+    private var alertPresenter: AlertPresenter?
     private let statisticService: StatisticService!
     
     init(viewController: MovieQuizViewControllerProtocol) {
@@ -104,7 +104,7 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         if self.isLastQuestion() {
             let viewModel = QuizResultsViewModel(
                 title: "Этот раунд окончен!",
-                text: "pizda",
+                text: "ignored",
                 buttonText: "Сыграть ещё раз")
             viewController?.show(quiz: viewModel)
         } else {

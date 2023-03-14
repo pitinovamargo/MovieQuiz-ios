@@ -42,7 +42,6 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     @IBAction private func noButtonClicked(_ sender: UIButton) {
         noButton.isEnabled = false
         
-        presenter.currentQuestion = presenter.currentQuestion
         presenter.noButtonClicked()
     }
     
