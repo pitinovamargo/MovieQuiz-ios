@@ -22,9 +22,9 @@ Application goals:
 - UnitTests, UITests
 
 ## Installation ##
-Installation and launch via Xcode.
+Installation and launch via Xcode. Interface elements adapt to iPhone screen resolutions starting from X - layout for SE and iPad is not provided.
 
-Minimum system version iOS 13.0. Interface elements adapt to iPhone screen resolutions starting from X - layout for SE and iPad is not provided.
+Minimum system version iOS 13.0.
 
 ## Links ##
 [Design Figma](https://www.figma.com/file/l0IMG3Eys35fUrbvArtwsR/YP-Quiz?node-id=34%3A243)
